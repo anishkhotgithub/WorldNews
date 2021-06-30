@@ -20,7 +20,7 @@
 		.overlay {
 		  position: fixed;
 		  top: 0;
-		  bottom: 0;
+		  bottom: 0;       
 		}
 		
 		.sidebar {
@@ -97,12 +97,12 @@
                 >Home</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link px-3 px-lg-2" href="/user/register">Register</a>
-            </li>
             <sec:authorize access="!isAuthenticated()">
             <li class="nav-item">
               <a class="nav-link px-3 px-lg-2" href="/user/login">Login</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link px-3 px-lg-2" href="/user/register">Register</a>
             </li>
             </sec:authorize>
             
@@ -116,10 +116,10 @@
               <a class="nav-link px-3 px-lg-2" href="/user/recordPage">RecordPage</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3 px-lg-2" href="#">Link</a>
+              <a class="nav-link px-3 px-lg-2" href="/worldnews/upload">AddPhoto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link px-3 px-lg-2" href="#">Link</a>
+              <a class="nav-link px-3 px-lg-2" href="/worldnews">Photo</a>
             </li>
             <li class="nav-item">
               <a class="nav-link px-3 px-lg-2" href="#">Link</a>

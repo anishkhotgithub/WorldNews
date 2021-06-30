@@ -42,6 +42,7 @@
 		</table>
 	</div>
 	</sec:authorize>
+	<sec:authorize access="hasAuthority('user')">
 	<div class="container mt-4">
 		<table class="table table-striped table-dark">
 		  <thead>
@@ -62,5 +63,6 @@
 		  </c:forEach>
 		</table>
 	</div>
+	</sec:authorize>
 </body>
 </html>

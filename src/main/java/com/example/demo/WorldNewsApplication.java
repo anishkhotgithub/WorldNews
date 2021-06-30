@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @SpringBootApplication
 @ComponentScan(basePackages = "com.example")
 @EntityScan("com.example.model")
-@EnableMongoRepositories("com.example.repository")
+@EnableMongoRepositories("com.example.Repository")
 public class WorldNewsApplication {
 
 	public static void main(String[] args) {
