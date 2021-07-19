@@ -36,7 +36,10 @@ public class WorldNews
 		super();
 		this.title = title;
 	}
-	
+	public WorldNews(Binary image) {
+		super();
+		this.image = image;
+	}
 	@Override
 	public String toString() {
 		return "WorldNews [id=" + id + ", title=" + title + ", image=" + image + "]";

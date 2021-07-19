@@ -21,7 +21,6 @@ import com.example.model.WorldNews;
 import com.example.serviceImpl.WorldNewsService;
 
 @Controller
-@RequestMapping("/news")
 public class WorldNewsController 
 {
 	@Autowired
@@ -35,7 +34,7 @@ public class WorldNewsController
         WorldNews photo = newsService.getPhoto(id);
         model.addAttribute("title", photo.getTitle());
         model.addAttribute("image", Base64.getEncoder().encodeToString(photo.getImage().getData()));
-        return "Base64.getEncoder().encodeToString(photo.getImage().getData())";
+        return "worldnews";
     }
     @GetMapping("/worldnews/upload")
     public String uploadPhoto(Model model) {
@@ -43,13 +42,12 @@ public class WorldNewsController
         return "worldnewsadd";
     }
     @GetMapping("/allPhotos")
-	public String view3(Model m) 
+	public String view3(Model m,Iterable<String> ids) 
 	{
-		List<WorldNews> list = worldRepository.findAll();
-		m.addAttribute("image", Base64.getEncoder().encodeToString(((WorldNews) list).getImage().getData()));
-		if (!list.isEmpty()) 
+		Iterable<WorldNews> list = newsService.findAllById(ids);
+		if (!(list==null)) 
 		{
-			m.addAttribute("news", list);
+			m.addAttribute("news", Base64.getEncoder().encodeToString(((WorldNews) list).getImage().getData()));
 		} 
 		else {
 			m.addAttribute("msg", "Sorry record not found!");
@@ -57,7 +55,7 @@ public class WorldNewsController
 		return "allphotos";
 	}
     
-    @PostMapping("/worldnews/add")
+	@PostMapping("/worldnews/add")
     public String addPhoto(@RequestParam("title") String title, @RequestParam("image") MultipartFile image, Model model) throws IOException {
         String id = newsService.addPhoto(title, image);
         return "redirect:/worldnews/" + id;
